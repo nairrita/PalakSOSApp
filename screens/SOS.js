@@ -1,13 +1,13 @@
 //Importing components from libraries
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, ImageBackground, TouchableOpacity, Linking, PermissionsAndroid, FlatList, Modal} from 'react-native';
+import React  from 'react';
+import { StyleSheet, Text,Input, View, Image, ScrollView, ImageBackground, TouchableOpacity, Linking, PermissionsAndroid, FlatList, Modal} from 'react-native';
 import * as Permissions from 'expo-permissions'
 import Constants from 'expo-constants';
 import * as Contacts from 'expo-contacts';
 import { ListItem, Icon, SearchBar, Header, Avatar, Button } from 'react-native-elements';
 import call from 'react-native-phone-call'
 import * as SMS from 'expo-sms';
-//import ChatBot from '../components/ChatBot.js'
+//import Chat from './screens/Chat'
 import { WebView } from 'react-native-webview';
 import * as Location from 'expo-location';
 
@@ -39,7 +39,8 @@ export default class SOSscreen extends React.Component{
       locationLongitude: null,
       addressLink: null,
       mapVisible: false,
-      otherNumbersVisble: false
+      otherNumbersVisble: false,
+     
   };
 }
 
@@ -95,7 +96,6 @@ export default class SOSscreen extends React.Component{
       );
     }
   }
-
 
 
   //Function to show the nearby police stations
@@ -237,68 +237,70 @@ export default class SOSscreen extends React.Component{
     )
   }
 
+  state = {
+    name : ' '
+  }
+
     //Displaying various components in render
     render(){
-        return(
-         
-            <View>
+      return(
+       
+          <View>
+            
+                {/* <AppHeader navigation ={this.props.navigation}/> */}
               
-                  {/* <AppHeader navigation ={this.props.navigation}/> */}
-                
-                  {this.showModal()}
-                 
-                  {this.showPoliceStations()}
-                  {this.showOtherNumbers()}
+                {this.showModal()}
+                {/* {this.showChatBot()} */}
+                {this.showPoliceStations()}
+                {this.showOtherNumbers()}
 
-                  <ImageBackground source={require('../assets/bg.png')} style={styles.image}>                                       
+                <ImageBackground source={require('../assets/bg.png')} style={styles.image}>                                       
 
-                      <Image style={{width: 100, height: 100, alignSelf: 'center', marginTop: 5, marginBottom: 40}} source ={require('../assets/SOS.png')} />
+                    <Image style={{width: 100, height: 100, alignSelf: 'center', marginTop: 5, marginBottom: 40}} source ={require('../assets/SOS.png')} />
 
-                      <View style={{flexDirection: 'row', alignSelf: 'center', marginBottom: 50}}>
-                      <TouchableOpacity style={[styles.button,{marginRight: 50}]} onPress={()=> {call(args)}} >
-                          <Image source={require('../assets/100.png')} style={styles.button}/>
-                          <Text style={styles.buttonText}>Call Police</Text>
-                      </TouchableOpacity>
+                    <View style={{flexDirection: 'row', alignSelf: 'center', marginBottom: 50}}>
+                    <TouchableOpacity style={[styles.button,{marginRight: 50}]} onPress={()=> {call(args)}} >
+                        <Image source={require('../assets/100.png')} style={styles.button}/>
+                        <Text style={styles.buttonText}>Call Police</Text>
+                    </TouchableOpacity>
 
-                      <TouchableOpacity style={styles.button} onPress={()=> this.setState({visible:true})} >
-                          <Image source={require('../assets/message.png')} style={styles.button}/>
-                          <Text style={styles.buttonText}>Message Family</Text>
-                      </TouchableOpacity>
-                      </View>
+                    <TouchableOpacity style={styles.button} onPress={()=> this.setState({visible:true})} >
+                        <Image source={require('../assets/message.png')} style={styles.button}/>
+                        <Text style={styles.buttonText}>Message Family</Text>
+                    </TouchableOpacity>
+                    </View>
 
-                      <View style={{flexDirection: 'row', alignSelf: 'center'}}>
-                      <TouchableOpacity style={[styles.button,{marginRight: 50}]} onPress={()=>{this.setState({mapVisible: true}), this.getLocation();}}>
-                          <Image source={require('../assets/maps.png')} style={styles.button}/>
-                          <Text style={styles.buttonText}>Nearby Police Staions</Text>
-                      </TouchableOpacity>
+                    <View style={{flexDirection: 'row', alignSelf: 'center'}}>
+                    <TouchableOpacity style={[styles.button,{marginRight: 50}]} onPress={()=>{this.setState({mapVisible: true}), this.getLocation();}}>
+                        <Image source={require('../assets/maps.png')} style={styles.button}/>
+                        <Text style={styles.buttonText}>Nearby Police Staions</Text>
+                    </TouchableOpacity>
 
-                      <TouchableOpacity style={styles.button} onPress={()=>{this.setState({otherNumbersVisble: true})}} >
-                          <Image source={require('../assets/othernos.png')} style={styles.button}/>
-                          <Text style={styles.buttonText}>Emergency Numbers</Text>
-                      </TouchableOpacity>
-                      </View>
+                    <TouchableOpacity style={styles.button} onPress={()=>{this.setState({otherNumbersVisble: true})}} >
+                        <Image source={require('../assets/othernos.png')} style={styles.button}/>
+                        <Text style={styles.buttonText}>Emergency Numbers</Text>
+                    </TouchableOpacity>
+                    </View>
 
-                      <View>
-                          <Avatar
-                              containerStyle={{alignSelf:'flex-end', marginTop: 75 }}                      
-                              source={require('../assets/chat.png')}
-                              size={60}                          
-                              onPress={()=>{this.setState({chat:true})}}
-                          />
-                          <Text style={{marginTop: -2, alignSelf:'flex-end', marginRight: 8, color: '#681fa2', fontSize: 13}}>ChatBot</Text>
-                      
-                      <TouchableOpacity onPress = {()=>{
-                          this.props.navigation.navigate('Home')
-                      }} >
-                    <Text>Back</Text>
-                      </TouchableOpacity>
-                      </View>                                         
+                    <View>
+                        <Avatar
+                            containerStyle={{alignSelf:'flex-end', marginTop: 75 }}                      
+                            source={require('../assets/chat.png')}
+                            size={60}                          
+                            onPress={()=>{this.props.navigation.navigate('ChatBot',{name:this.state.name})}}
+                        />
+                        <Text style={{marginTop: -2, alignSelf:'flex-end', marginRight: 8, color: '#681fa2', fontSize: 13}}>ChatBot</Text>
+                    </View>   
 
-                  </ImageBackground>
+                                                    
 
-            </View>
-        )
-    }
+                </ImageBackground>
+
+               
+
+          </View>
+      )
+  }
 }
 
 //Using Stylesheet to create different styles

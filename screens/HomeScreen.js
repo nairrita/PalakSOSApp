@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {View,Text,StyleSheet,TouchableOpacity,ScrollView} from 'react-native';
 
+
 export default class HomeScreen extends React.Component{
     render(){
         return(
@@ -23,6 +24,10 @@ export default class HomeScreen extends React.Component{
                 </TouchableOpacity>
                 <TouchableOpacity style = {styles.button} onPress={()=>{this.props.navigation.navigate('Safety')}}>
                 <Text style = {styles.buttonText}>Safety</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style = {styles.button} onPress={()=>{this.props.navigation.navigate('Message')}}>
+                <Text style = {styles.buttonText}>Start Chat</Text>
                 </TouchableOpacity>
             </View>
             </ScrollView>
