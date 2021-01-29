@@ -9,6 +9,7 @@ import LawsScreen from './screens/Laws';
 import RatingsScreen from './screens/Ratings';
 import Defense from './screens/SelfDefence'
 import HomeScreen from './screens/HomeScreen';
+import SOS from './screens/SOS';
 
 
 
@@ -25,6 +26,7 @@ export default class App extends React.Component{
 
 const SwitchNavigator = createSwitchNavigator({
   Home:HomeScreen,
+  SOS:SOS,
   Escape: EscapeScreen,
    Laws: LawsScreen,
   Ratings: RatingsScreen,

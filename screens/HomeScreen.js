@@ -1,9 +1,10 @@
 import * as React from 'react';
-import {View,Text,StyleSheet,TouchableOpacity} from 'react-native';
+import {View,Text,StyleSheet,TouchableOpacity,ScrollView} from 'react-native';
 
 export default class HomeScreen extends React.Component{
     render(){
         return(
+            <ScrollView>
             <View style = {{alignItems:'center', justifyContent:'center', flex:1}}>
                 <TouchableOpacity style = {styles.button} onPress={()=>{this.props.navigation.navigate('SOS')}}>
                 <Text style = {styles.buttonText}>SOS</Text>
@@ -24,6 +25,7 @@ export default class HomeScreen extends React.Component{
                 <Text style = {styles.buttonText}>Safety</Text>
                 </TouchableOpacity>
             </View>
+            </ScrollView>
         )
     }
 }
