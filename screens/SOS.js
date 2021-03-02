@@ -101,6 +101,7 @@ export default class SOSscreen extends React.Component{
   //Function to show the nearby police stations
   showPoliceStations=()=>{
     return(
+      
       <Modal
         animationType="slide"
         transparent={false}
@@ -108,7 +109,7 @@ export default class SOSscreen extends React.Component{
       >
       <View>
         <View style={{flexDirection: 'row',  borderBottomWidth: 1, borderBottomColor: '#D2D2D2', paddingBottom: 20}}>
-          <Icon name="arrow-left" type="font-awesome" size={25} onPress={()=>{this.setState({mapVisible:false})}} color="#7700F2" iconStyle={{alignSelf: 'flex-start', marginTop: 20, marginLeft: 5}}/>
+           <Icon name="arrow-left" type="font-awesome" size={25} color="#7700F2" iconStyle={{alignSelf: 'flex-start', marginTop: 20, marginLeft: 5}}/> 
           <Text style={{textAlign: 'center', alignSelf:'center', fontSize: 20, marginLeft: 55, marginTop: 20}}>Nearby Police Stations</Text>
           <Icon name="map-marked-alt" type="font-awesome-5" size={25} color="#7700F2" iconStyle={{alignSelf: 'flex-end', marginRight: 8, marginTop: 20, marginLeft: 45}} />
         </View>
@@ -120,6 +121,8 @@ export default class SOSscreen extends React.Component{
         style={{borderTopWidth: 1, borderTopColor: '#000000'}}
       />
       </Modal>
+      
+     
       
     )
   }
@@ -241,6 +244,10 @@ export default class SOSscreen extends React.Component{
     name : ' '
   }
 
+  goBack=()=>{
+    this.props.navigation.navigate('Laws')
+  }
+
     //Displaying various components in render
     render(){
       return(
@@ -292,7 +299,22 @@ export default class SOSscreen extends React.Component{
                         <Text style={{marginTop: -2, alignSelf:'flex-end', marginRight: 8, color: '#681fa2', fontSize: 13}}>ChatBot</Text>
                     </View>   
 
-                                                    
+                    <TouchableOpacity style={[styles.button,{marginRight:50}]} onPress={()=>{this.props.navigation.navigate('Defense')}}>
+                <Text style = {styles.buttonText}>Defense</Text>
+                <Image style={{width:100, height:100}} source={require('../assets/defense.png')}/>
+                </TouchableOpacity>
+                <TouchableOpacity style={[styles.button,{marginRight: 300}]} onPress={()=>{this.props.navigation.navigate('Laws')}}>
+                <Text style = {styles.buttonText}>Laws</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={[styles.button,{marginRight:30}]} onPress={()=>{this.props.navigation.navigate('Ratings')}}>
+                <Text style = {styles.buttonText}>Ratings</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style = {styles.button} onPress={()=>{this.props.navigation.navigate('Escape')}}>
+                <Text style = {styles.buttonText}>Escape</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style = {styles.button} onPress={()=>{this.props.navigation.navigate('Safety')}}>
+                <Text style = {styles.buttonText}>Safety</Text>
+                </TouchableOpacity>                   
 
                 </ImageBackground>
 
@@ -320,8 +342,8 @@ const styles = StyleSheet.create({
         marginBottom: 50,
         marginTop: -7,
         color: '#681fa2',
-        fontSize: 17,
-        textAlign: 'center'
+        textAlign: 'center',
+        
     },
     callImage: {
       width: 120,

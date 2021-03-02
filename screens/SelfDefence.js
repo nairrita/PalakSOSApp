@@ -108,7 +108,7 @@ export default class Defense extends React.Component{
                             style={styles.video}
                         />
                         <Text style={styles.text}>Escape from a 'bear hug attack'</Text>
-                        <TouchableOpacity onPress = {()=>{this.props.navigation.navigate("Home")}}>
+                        <TouchableOpacity onPress = {()=>{this.props.navigation.navigate("SOS")}}>
                             <Text>BACK</Text>
                         </TouchableOpacity>       
 

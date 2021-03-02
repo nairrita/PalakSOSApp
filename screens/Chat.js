@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View ,TouchableOpacity} from "react-native";
 import { GiftedChat } from "react-native-gifted-chat";
 import Firebase from "../Firebase";
 
@@ -33,11 +33,16 @@ class Chat extends React.Component {
 
   render() {
     return (
+
+      
       <GiftedChat
         messages={this.state.messages}
         user={this.user}
         onSend={Firebase.shared.send}
       />
+      
+      
+      
     );
   }
 }

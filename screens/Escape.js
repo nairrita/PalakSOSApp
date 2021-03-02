@@ -74,7 +74,7 @@ export default class EscapeScreen extends React.Component {
                         />
                         </TouchableOpacity>
 
-                        <TouchableOpacity onPress = {()=>{this.props.navigation.navigate("Home")}}>
+                        <TouchableOpacity onPress = {()=>{this.props.navigation.navigate("SOS")}}>
                             <Text>BACK</Text>
                         </TouchableOpacity>
                         </View>

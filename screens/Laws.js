@@ -59,7 +59,7 @@ export default class LawsScreen extends React.Component {
                         />
                         </TouchableOpacity>
 
-                        <TouchableOpacity onPress = {()=>{this.props.navigation.navigate("Home")}}>
+                        <TouchableOpacity onPress = {()=>{this.props.navigation.navigate("SOS")}}>
                             <Text>BACK</Text>
                         </TouchableOpacity>
                         </View>

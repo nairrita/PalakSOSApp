@@ -27,9 +27,10 @@ export default class App extends React.Component{
 }
 
 const SwitchNavigator = createSwitchNavigator({
+  SOS:SOSscreen,
   Home:HomeScreen,
   Message:Message,
-  SOS:SOSscreen,
+  
   ChatBot:Chat,
   Escape: EscapeScreen,
    Laws: LawsScreen,

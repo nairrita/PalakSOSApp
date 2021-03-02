@@ -31,7 +31,7 @@ export default class RatingsScreen extends React.Component {
 
                 </ImageBackground>
 
-                <TouchableOpacity onPress = {()=>{this.props.navigation.navigate("Home")}}>
+                <TouchableOpacity onPress = {()=>{this.props.navigation.navigate("SOS")}}>
                             <Text>BACK</Text>
                         </TouchableOpacity>
 

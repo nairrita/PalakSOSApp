@@ -36,6 +36,7 @@ class Message extends React.Component {
           >
             <Text style={{ color: "white" }}>Start Chat</Text>
           </Button>
+          
           </View>
     );
   }
